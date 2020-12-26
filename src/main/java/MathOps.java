@@ -1,10 +1,10 @@
-package java;
+package main.java;
 
 public class MathOps {
 	private int number1;
 	private int number2;
 
-	MathOps(int number1, int number2) {
+	public MathOps(int number1, int number2) {
 		this.number1 = number1;
 		this.number2 = number2;
 	}
@@ -29,10 +29,11 @@ public class MathOps {
 		return number1 + number2;
 	}
 
-	public int divide() throws Exception {
-		if (number2 == 0)
-			throw new Exception("Division by Zero is not allowed!");
-
+	public int divide() {
+		if (number2 == 0) {
+			System.out.println("Division by Zero is not allowed!");
+			return 0;
+		}
 		return number1 / number2;
 	}
 
