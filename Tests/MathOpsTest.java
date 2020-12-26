@@ -1,8 +1,7 @@
+import main.java.MathOps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import main.java.MathOps;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,12 +22,30 @@ public class MathOpsTest {
 	}
 
 	@Test
+	public void whenSetAndGetNumber1_thenSetAndGetNumber1() {
+		int number0 = 1;
+		mathOps.setNumber1(number0);
+		int number1 = mathOps.getNumber1();
+
+		assertEquals(number0, number1);
+	}
+
+	@Test
+	public void whenSetAndGetNumber2_thenSetAndGetNumber2() {
+		int number0 = 10;
+		mathOps.setNumber2(number0);
+		int number2 = mathOps.getNumber2();
+
+		assertEquals(number0, number2);
+	}
+
+	@Test
 	public void whenAddIsUsed_ThenReturnAddition() {
 		int number1 = 5;
 		int number2 = 4;
 		mathOps.setNumber1(number1);
 		mathOps.setNumber2(number2);
-		assertEquals(mathOps.add(), number1 + number2);
+		assertEquals(number1 + number2, mathOps.add());
 	}
 
 	@Test
@@ -37,7 +54,7 @@ public class MathOpsTest {
 		int number2 = 2;
 		mathOps.setNumber1(number1);
 		mathOps.setNumber2(number2);
-		assertEquals(mathOps.divide(), number1 / number2);
+		assertEquals(number1 / number2, mathOps.divide());
 	}
 
 	@Test
@@ -46,6 +63,24 @@ public class MathOpsTest {
 		int number2 = 0;
 		mathOps.setNumber1(number1);
 		mathOps.setNumber2(number2);
-		assertEquals(mathOps.divide(), 0);
+		assertEquals(0, mathOps.divide());
+	}
+
+	@Test
+	public void whenMultiply_thenReturnMultiplication() {
+		int number1 = 5;
+		int number2 = 5;
+		mathOps.setNumber1(number1);
+		mathOps.setNumber2(number2);
+		assertEquals(number1 * number2, mathOps.multiplication());
+	}
+
+	@Test
+	public void whenSubtract_thenReturnSubtraction() {
+		int number1 = 6;
+		int number2 = 5;
+		mathOps.setNumber1(number1);
+		mathOps.setNumber2(number2);
+		assertEquals(number1 - number2, mathOps.subtract());
 	}
 }
