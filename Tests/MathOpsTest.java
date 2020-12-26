@@ -83,5 +83,4 @@ public class MathOpsTest {
 		mathOps.setNumber2(number2);
 		assertEquals(number1 - number2, mathOps.subtract());
 	}
-
 }
