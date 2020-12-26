@@ -29,6 +29,14 @@ public class MathOps {
 		return number1 + number2;
 	}
 
+	public int subtract() {
+		return number1 - number2;
+	}
+
+	public int multiplication() {
+		return number1 * number2;
+	}
+
 	public int divide() {
 		if (number2 == 0) {
 			System.out.println("Division by Zero is not allowed!");
