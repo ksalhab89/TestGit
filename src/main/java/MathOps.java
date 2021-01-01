@@ -45,4 +45,11 @@ public class MathOps {
 		return number1 / number2;
 	}
 
+	@Override
+	public java.lang.String toString() {
+		return "MathOps{" +
+				       "number1=" + number1 +
+				       ", number2=" + number2 +
+				       '}';
+	}
 }
