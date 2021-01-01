@@ -46,7 +46,7 @@ public class MathOps {
 	}
 
 	@Override
-	public java.lang.String toString() {
+	public String toString() {
 		return "MathOps{" +
 				       "number1=" + number1 +
 				       ", number2=" + number2 +
