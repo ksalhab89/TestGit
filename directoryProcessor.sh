@@ -16,11 +16,13 @@ display_usage() {
   echo "$explanation"
 }
 
+#if number of arguments is less than or equals to 2 usage is printed, script exits with code 1.
 if [ $# -le 2 ]; then
   display_usage
   exit 1
 fi
 
+#if directory provided doesn't exist, error is printed & script exits with code 1.
 if [ ! -d "directory" ]; then
   echo "error! directory missing at: $directory, script will exit!"
   exit 1
@@ -37,9 +39,8 @@ else
   exit 1
 fi
 
-#todo analytics should be performed on the WHOLE DIRECTORY.
 analytics() {
-  tr -d c "$option" < "$directory" | awk '{ print length; }'
+  find . -name "$option" | wc -l
 }
 
 delete() {
@@ -48,9 +49,9 @@ delete() {
     echo "error: option is not a number"
     exit 1
   fi
-  find "$directory" -type -f -size +"$option" -delete
+  find . "$directory" -type -f -size +"$option" -delete
 }
 
 arrange() {
-  echo
+  mv "*.$option" "$directory/$option/"
 }
