@@ -23,10 +23,32 @@ if [ $# -le 2 ]; then
 fi
 
 #if directory provided doesn't exist, error is printed & script exits with code 1.
-if [ ! -d "directory" ]; then
+if [ ! -d "$directory" ]; then
   echo "error! directory missing at: $directory, script will exit!"
   exit 1
 fi
+
+#todo doesn't work.
+analytics() {
+  find . -name $option | wc -l
+}
+
+delete() {
+  regex_number='^[0-9]+$'
+  if ! [[ $option =~ $regex_number ]]; then
+    echo "error! option is not a number, script will exit!"
+    exit 1
+  fi
+  find $directory -type -f -size +$option -delete
+}
+
+#todo doesn't work.
+arrange() {
+  if [ ! -d $directory/$option/ ]; then
+    mkdir $directory/$option/
+  fi
+  mv *.$option $directory/$option/
+}
 
 if [ "$operation" == 'ana' ]; then
   analytics
@@ -38,20 +60,3 @@ else
   echo 'error! incorrect operation, script will exit!'
   exit 1
 fi
-
-analytics() {
-  find . -name "$option" | wc -l
-}
-
-delete() {
-  regex_number='^[0-9]+$'
-  if ! [[ $option =~ $regex_number ]]; then
-    echo "error: option is not a number"
-    exit 1
-  fi
-  find . "$directory" -type -f -size +"$option" -delete
-}
-
-arrange() {
-  mv "*.$option" "$directory/$option/"
-}
