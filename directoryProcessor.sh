@@ -1,16 +1,19 @@
 #!/bin/bash
 #Atypon Training Shell scripting Assignment
 
+#script explanation to use in usage function.
 explanation="The first argument is the name of the directory that processing will happen recursively.
 The second and third arguments have 3 possibilities:
 -ana: analytics   option:   regex to count.
 -del: delete      option:   biggest file size (Files larger will deleted).
 -arr: arrange     option:   file type (to arrange in one new directory)."
 
+#variables read from user.
 directory=${1}
 operation=${2}
 option=${3}
 
+#function to display usage when number of arguments is invalid.
 display_usage() {
   echo 'Usage: ./directoryProcessor <directory> <operation> <option>'
   echo "$explanation"
@@ -48,6 +51,7 @@ arrange() {
   echo "File(s) with extension $option moved to newly created directory $directory/$option "
 }
 
+#main script
 if [ "$operation" == 'ana' ]; then
   analytics
 elif [ "$operation" == 'del' ]; then
