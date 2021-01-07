@@ -28,9 +28,9 @@ if [ ! -d "$directory" ]; then
   exit 1
 fi
 
-#todo doesn't work.
 analytics() {
-  find . -name $option | wc -l
+  echo "Number of files that contain $option is:"
+  find $directory -maxdepth 1 -name *$option* -printf '.' | wc -m
 }
 
 delete() {
@@ -39,15 +39,13 @@ delete() {
     echo "error! option is not a number, script will exit!"
     exit 1
   fi
-  find $directory -type -f -size +$option -delete
+  find $directory -type f -size +$option -exec rm -i {} \;
+  echo "Delete request(s) to all files larger then $option bytes was/were prompted to user."
 }
 
-#todo doesn't work.
 arrange() {
-  if [ ! -d $directory/$option/ ]; then
-    mkdir $directory/$option/
-  fi
-  mv *.$option $directory/$option/
+  find $directory -type f -name *.$option -exec mv -i {} $directory/$option \;
+  echo "File(s) with extension $option moved to newly created directory $directory/$option "
 }
 
 if [ "$operation" == 'ana' ]; then
